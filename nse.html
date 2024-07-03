@@ -1,0 +1,57 @@
+<!-- nse.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Sentiment Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            text-align: left;
+        }
+        .result {
+            font-size: 18px;
+            margin-top: 18px;
+        }
+        .result span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Market/Stock Prediction</h1>
+        <h5><a href="https://www.indiainfoline.com/markets/derivatives/put-call-ratio" target="_blank">Click here to get values</a></h5>
+
+        <!-- Form to accept user input -->
+        <form method="post" action="/">
+            <label for="symbol">Stock Symbol:</label>
+            <input type="text" id="symbol" name="symbol"><br><br>
+            
+            <label for="call_put_ratio">Call/Put Ratio:</label>
+            <input type="number" id="call_put_ratio" name="call_put_ratio" step="0.01" required><br><br>
+            
+            <label for="volume">Volume:</label>
+            <input type="number" id="volume" name="volume" step="0.01" required><br><br>
+            
+            <input type="submit" value="Predict">
+        </form>
+
+        <!-- Display prediction results -->
+        <div class="result">
+            {% if symbol %}
+                Stock Symbol: <span>{{ symbol }}</span><br>
+            {% endif %}
+            VIX: <span>{{ vix if vix is not none else "Data not available" }}</span><br>
+            Call/Put Ratio: <span>{{ call_put_ratio if call_put_ratio is not none else "Data not available" }}</span><br>
+            Volume: <span>{{ volume if volume is not none else "Data not available" }}</span><br>
+            Predicted Sentiment: <span>{{ sentiment }}</span>
+        </div>
+    </div>
+</body>
+</html>
