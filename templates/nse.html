@@ -36,6 +36,12 @@
             margin: 0;
         }
     </style>
+    <style>
+        /* Add space between <td> elements */
+        td {
+            padding-right: 20px; /* Adjust as needed */
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -63,6 +69,9 @@
             </ul>
         </div>
     </nav>
+    <table>
+        <tr>
+            <td>
     <div class="container">
         <h1>Market/Stock Prediction</h1>
         <h5><a href="https://www.indiainfoline.com/markets/derivatives/put-call-ratio" target="_blank">Click here to get values</a></h5>
@@ -80,7 +89,7 @@
             
             <input type="submit" value="Predict">
         </form>
-
+        
         <!-- Display prediction results -->
         <div class="result">
             {% if symbol %}
@@ -89,9 +98,23 @@
             VIX: <span>{{ vix if vix is not none else "Data not available" }}</span><br>
             Call/Put Ratio: <span>{{ call_put_ratio if call_put_ratio is not none else "Data not available" }}</span><br>
             Volume: <span>{{ volume if volume is not none else "Data not available" }}</span><br>
-            Predicted Sentiment: <b><span>{{ sentiment }}</span></b>
+            Predicted Sentiment: <h3><span>{{ sentiment }}</span></h3>
         </div>
     </div>
+</td>
+<td>
+    <div class="result">
+        {% if nsymbol %}
+           <h2> <span>{{ nsymbol }}</span><br></h2>
+        {% endif %}
+        <h4>VIX: <span>{{ vix if vix is not none else "Data not available" }}</span><br>
+        Call/Put Ratio: <span>{{ ncall_put_ratio if ncall_put_ratio is not none else "Data not available" }}</span><br>
+        Volume: <span>{{ nvolume if nvolume is not none else "Data not available" }}</span><br>
+        Predicted Sentiment: <b><span>{{ nsentiment }}</span></b></h4>
+    </div>
+</td>
+</tr>
+</table>
     <footer>By Prasanth N</footer>
 </body>
 </html>
