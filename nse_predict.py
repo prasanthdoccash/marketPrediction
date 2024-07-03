@@ -48,16 +48,10 @@ def predict_market_sentiment(vix, call_put_ratio, volume):
         return "Bullish"
     else:
         return "Neutral"
-    
+
 
 @app.route('/', methods=['GET', 'POST'])
 def predict_nse():
-    # Nifty prediction
-    nsymbol ="NIFTY"
-    ncall_put_ratio, nvolume = fetch_call_put_ratio()  # Only fetch PCR ratio, ignore volume for now
-    vix = fetch_vix_data()
-    vix = round(vix,2)
-    nsentiment = predict_market_sentiment(vix, ncall_put_ratio,nvolume)
     
 
     if request.method == 'POST':
@@ -80,7 +74,7 @@ def predict_nse():
         return render_template('nse.html', vix=vix, call_put_ratio=call_put_ratio, sentiment=sentiment, symbol=symbol, volume=volume,ncall_put_ratio=ncall_put_ratio, nsentiment=nsentiment, nsymbol=nsymbol, nvolume=nvolume)
 
     # For GET request or initial page load
-    return render_template('nse.html',vix=vix,ncall_put_ratio=ncall_put_ratio, nsentiment=nsentiment, nsymbol=nsymbol, nvolume=nvolume)
+    return render_template('nse.html')
 
 if __name__ == '__main__':
     #app.run(debug=True)
