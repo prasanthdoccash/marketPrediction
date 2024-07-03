@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         
-        body, html {
+        html {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -89,7 +89,7 @@
             VIX: <span>{{ vix if vix is not none else "Data not available" }}</span><br>
             Call/Put Ratio: <span>{{ call_put_ratio if call_put_ratio is not none else "Data not available" }}</span><br>
             Volume: <span>{{ volume if volume is not none else "Data not available" }}</span><br>
-            Predicted Sentiment: <span>{{ sentiment }}</span>
+            Predicted Sentiment: <b><span>{{ sentiment }}</span></b>
         </div>
     </div>
     <footer>By Prasanth N</footer>
