@@ -83,4 +83,5 @@ def predict_nse():
     return render_template('nse.html',vix=vix,ncall_put_ratio=ncall_put_ratio, nsentiment=nsentiment, nsymbol=nsymbol, nvolume=nvolume)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=80)
